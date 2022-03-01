@@ -3,3 +3,6 @@ pb01:
 
 pb02:
 	protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. 02-simple/proto/simple.proto
+
+pb03:
+	protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. 03-server-stream/proto/server_stream.proto
