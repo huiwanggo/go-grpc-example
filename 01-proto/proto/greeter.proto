@@ -5,7 +5,7 @@ option go_package = "01-proto/proto";
 package proto;
 
 service Greeter {
-  rpc SallyHello(HelloRequest) returns (HelloReply) {}
+  rpc SallyHello (HelloRequest) returns (HelloReply) {}
 }
 
 message HelloRequest {

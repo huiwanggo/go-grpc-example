@@ -7,7 +7,7 @@ package proto;
 // 定义服务，可多个
 service Simple {
   // 定义 rpc 接口，可多个
-  rpc Send(SimpleRequest) returns (SimpleResponse) {}
+  rpc Send (SimpleRequest) returns (SimpleResponse) {}
 }
 
 // 定义发送消息

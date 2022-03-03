@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "04-client-stream/proto";
+
+package proto;
+
+service StreamClient {
+  rpc List (stream StreamRequest) returns (SimpleResponse) {}
+}
+
+// 定义流式请求
+message StreamRequest {
+  string data = 1;
+}
+
+// 定义响应
+message SimpleResponse {
+  int32 code = 1;
+  string value = 2;
+}

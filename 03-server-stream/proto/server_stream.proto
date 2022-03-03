@@ -7,7 +7,7 @@ package proto;
 // 定义服务
 service StreamServer {
   // 服务端流式rpc
-  rpc ListValue(SimpleRequest) returns (stream StreamResponse) {}
+  rpc ListValue (SimpleRequest) returns (stream StreamResponse) {}
 }
 
 // 定义请求消息
