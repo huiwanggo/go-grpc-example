@@ -6,6 +6,8 @@ import (
 	pb "go-grpc-example/04-client-stream/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"io"
+	"log"
 	"strconv"
 )
 
@@ -19,7 +21,14 @@ func main() {
 	stream, _ := streamClient.List(context.Background())
 	for i := 0; i < 5; i++ {
 		// 向流中发送数据
-		_ = stream.Send(&pb.StreamRequest{Data: "stream client rpc " + strconv.Itoa(i)})
+		err := stream.Send(&pb.StreamRequest{Data: "stream client rpc " + strconv.Itoa(i)})
+		// 发送也要检测EOF，当服务端在消息没接收完前主动调用SendAndClose()关闭stream，此时客户端还执行Send()，则会返回EOF错误，所以这里需要加上io.EOF判断
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 	// 关闭流并获取返回的数据
 	res, _ := stream.CloseAndRecv()
