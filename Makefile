@@ -9,3 +9,14 @@ pb03:
 
 pb04:
 	protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. 04-client-stream/proto/client_stream.proto
+
+pb05:
+	protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. 05-stream/proto/stream.proto
+
+
+pb:
+	make pb01
+	make pb02
+	make pb03
+	make pb04
+	make pb05

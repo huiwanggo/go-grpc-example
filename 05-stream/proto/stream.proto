@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "05-stream/proto";
+
+package proto;
+
+service Stream {
+  rpc Message (stream StreamRequest) returns (stream StreamResponse) {}
+}
+
+message StreamRequest {
+  string value = 1;
+}
+
+message StreamResponse {
+  string value = 1;
+}
