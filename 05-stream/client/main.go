@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	pb "go-grpc-example/05-stream/proto"
+	pb "github.com/huiwanggo/go-grpc-example/05-stream/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"io"

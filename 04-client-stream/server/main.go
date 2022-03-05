@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	pb "go-grpc-example/04-client-stream/proto"
+	pb "github.com/huiwanggo/go-grpc-example/04-client-stream/proto"
 	"google.golang.org/grpc"
 	"io"
 	"net"

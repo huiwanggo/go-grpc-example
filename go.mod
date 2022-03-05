@@ -1,4 +1,4 @@
-module go-grpc-example
+module github.com/huiwanggo/go-grpc-example
 
 go 1.16
 

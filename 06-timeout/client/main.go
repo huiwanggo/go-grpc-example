@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	pb "go-grpc-example/06-timeout/proto"
+	pb "github.com/huiwanggo/go-grpc-example/06-timeout/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials/insecure"

@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "go-grpc-example/03-server-stream/proto"
+	pb "github.com/huiwanggo/go-grpc-example/03-server-stream/proto"
 	"google.golang.org/grpc"
 	"log"
 	"net"
