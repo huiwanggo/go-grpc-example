@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "07-tls/proto";
+
+package proto;
+
+// 定义服务，可多个
+service Simple {
+  // 定义 rpc 接口，可多个
+  rpc Send (SimpleRequest) returns (SimpleResponse) {}
+}
+
+// 定义发送消息
+message SimpleRequest {
+  // 定义发送参数
+  string data = 1; // 发送数据
+}
+
+// 定义响应消息
+message SimpleResponse {
+  int32 code = 1; // 标识号，不可重复，不可修改（为了兼容）
+  string value = 2;
+}

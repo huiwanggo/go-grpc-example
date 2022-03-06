@@ -16,6 +16,8 @@ pb05:
 pb06:
 	protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. 06-timeout/proto/timeout.proto
 
+pb07:
+	protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. 07-tls/proto/tls.proto
 
 pb:
 	make pb01
@@ -24,3 +26,10 @@ pb:
 	make pb04
 	make pb05
 	make pb06
+	make pb07
+
+.PHONY: tls
+tls:
+	 go run $(GOROOT)/src/crypto/tls/generate_cert.go -host localhost
+	 mv cert.pem ./tls/cert.pem
+	 mv key.pem ./tls/key.pem
