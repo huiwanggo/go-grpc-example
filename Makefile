@@ -19,6 +19,9 @@ pb06:
 pb07:
 	protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. 07-tls/proto/tls.proto
 
+pb08:
+	protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. 08-token/proto/token.proto
+
 pb:
 	make pb01
 	make pb02
@@ -27,6 +30,7 @@ pb:
 	make pb05
 	make pb06
 	make pb07
+	make pb08
 
 .PHONY: tls
 tls:
