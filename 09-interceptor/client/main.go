@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	pb "github.com/huiwanggo/go-grpc-example/08-token/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
@@ -23,6 +24,12 @@ func (t Token) RequireTransportSecurity() bool {
 	return true
 }
 
+// LogInterceptor 客户端拦截器
+func LogInterceptor(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {
+	fmt.Println("call " + method)
+	return invoker(ctx, method, req, reply, cc, opts...)
+}
+
 func main() {
 
 	T := Token{
@@ -37,8 +44,8 @@ func main() {
 		log.Fatalf("failed to load credentials: %v", err)
 	}
 
-	// 连接服务器 添加 WithPerRPCCredentials Option
-	conn, err := grpc.Dial(":8888", grpc.WithTransportCredentials(creds), grpc.WithPerRPCCredentials(T))
+	// 连接服务器 添加 WithPerRPCCredentials Option， 拦截器 WithUnaryInterceptor
+	conn, err := grpc.Dial(":8888", grpc.WithTransportCredentials(creds), grpc.WithPerRPCCredentials(T), grpc.WithUnaryInterceptor(LogInterceptor))
 	if err != nil {
 		log.Fatal(err)
 	}
